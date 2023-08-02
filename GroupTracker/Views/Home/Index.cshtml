@@ -1,3 +1,35 @@
 @{
     Layout = "_Layout";
 }
+
+@using GroupTracker.Models
+
+<h1>D&D Group Tracker</h1>
+
+<hr>
+
+<h2>Campaigns:</h2>
+@if (Model["campaigns"].Length == 0)
+{
+    <h4>No active campaigns.</h4>
+}
+<ul>
+    @foreach (Campaign campaign in Model["campaigns"])
+    {
+        <li>@Html.ActionLink(@campaign.Title, "Details", "Campaigns", new { id = @campaign.CampaignId })</li>
+    }
+</ul>
+
+<h2>Players:</h2>
+@if (Model["players"].Length == 0)
+{
+    <h4>No current players.</h4>
+}
+<ul>
+    @foreach (Player player in Model["players"])
+    {
+        <li>@Html.ActionLink(@player.Name, "Details", "players", new { id = @player.PlayerId })</li>
+    }
+</ul>
+
+<hr>
