@@ -3,7 +3,7 @@ using GroupTracker.Models;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Project.Controllers
+namespace GroupTracker.Controllers
 {
     public class HomeController : Controller
     {

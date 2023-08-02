@@ -11,7 +11,7 @@
 <h2>Campaigns:</h2>
 @if (Model["campaigns"].Length == 0)
 {
-    <h4>No active campaigns.</h4>
+    <h3>No active campaigns.</h3>
 }
 <ul>
     @foreach (Campaign campaign in Model["campaigns"])
@@ -23,7 +23,7 @@
 <h2>Players:</h2>
 @if (Model["players"].Length == 0)
 {
-    <h4>No current players.</h4>
+    <h3>No current players.</h3>
 }
 <ul>
     @foreach (Player player in Model["players"])
@@ -33,3 +33,6 @@
 </ul>
 
 <hr>
+
+<h4>@Html.ActionLink("Add Campaign", "Create", "Campaigns")</h4>
+<h4>@Html.ActionLink("Add Player", "Create", "Players")</h4>
