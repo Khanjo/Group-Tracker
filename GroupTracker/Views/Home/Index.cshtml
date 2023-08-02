@@ -16,7 +16,7 @@
 <ul>
     @foreach (Campaign campaign in Model["campaigns"])
     {
-        <li>@Html.ActionLink(@campaign.Title, "Details", "Campaigns", new { id = @campaign.CampaignId })</li>
+        <li>@Html.ActionLink(@campaign.Title, "Details", "Campaigns", new {id = @campaign.CampaignId})</li>
     }
 </ul>
 
@@ -28,7 +28,7 @@
 <ul>
     @foreach (Player player in Model["players"])
     {
-        <li>@Html.ActionLink(@player.Name, "Details", "players", new { id = @player.PlayerId })</li>
+        <li>@Html.ActionLink(@player.Name, "Details", "players", new {id = @player.PlayerId})</li>
     }
 </ul>
 

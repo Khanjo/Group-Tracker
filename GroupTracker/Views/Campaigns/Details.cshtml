@@ -1,3 +1,42 @@
 @{
     Layout = "_Layout";
 }
+
+@using GroupTracker.Models
+@model GroupTracker.Models.Campaign
+
+<h1>@Html.DisplayFor(model => model.Title) Details</h1>
+
+<hr>
+
+<h3>Setting:</h3>
+<h3>@Html.DisplayFor(model => model.World)</h3>
+<br>
+<h3>@Html.DisplayNameFor(model => model.Summary)</h3>
+<h5>@Html.DisplayFor(model => model.Summary)</h5>
+<br>
+@if (@Model.JoinEntities.Count == 0)
+{
+    <h5>This campaign has no players currently</h5>
+}
+else
+{
+    <h4>Players in this campaign:</h4>
+    <ul>
+        @foreach (CampaignPlayer join in Model.JoinEntities)
+        {
+            <li>@join.Player.Name</li>
+            @using (Html.BeginForm("DeleteJoin", "Campaigns"))
+            {
+                @Html.Hidden("joinId", @join.CampaignPlayerId)
+                <input type="submit" value="Remove Player" class="btn btn-primary" />
+            }
+        }
+    </ul>
+}
+<br>
+<br>
+<h2>@Html.ActionLink("Add a Player", "AddPlayer", new {id = Model.CampaignId})</h2>
+<h2>@Html.ActionLink("Edit Campaign", "Edit", new {id = Model.CampaignId})</h2>
+<h2>@Html.ActionLink("Remove Campaign", "Delete", new {id = Model.CampaignId})</h2>
+<h2>@Html.ActionLink("Home", "Index", "Home")</h2>

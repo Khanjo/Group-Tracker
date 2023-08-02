@@ -1,0 +1,26 @@
+@{
+    Layout = "_Layout";
+}
+
+@model GroupTracker.Models.Campaign
+
+<h2>Edit @Html.DisplayFor(model => model.Title)</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.CampaignId)
+
+    <h4>@Html.LabelFor(model => model.Title):</h4>
+    @Html.TextBoxFor(model => model.Title)
+    <br>
+    <br>
+    <h4>@Html.LabelFor(model => model.World):</h4>
+    @Html.TextBoxFor(model => model.World)
+    <br>
+    <br>
+    <h4>@Html.LabelFor(model => model.Summary):</h4>
+    @Html.TextAreaFor(model => model.Summary, new {rows = 10, cols = 80})
+    <br>
+    <br>
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
