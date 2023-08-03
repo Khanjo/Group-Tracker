@@ -32,9 +32,9 @@ namespace GroupTracker.Controllers
 
         public ActionResult AddCampaign(int id)
         {
-            Player thisPlayer = _db.Players.FirstOrDefault(player => player.playerId == id);
+            Player thisPlayer = _db.Players.FirstOrDefault(player => player.PlayerId == id);
             ViewBag.CampaignId = new SelectList(_db.Campaigns, "CampaignId", "Title");
-            return View(thisPlayer)
+            return View(thisPlayer);
         }
 
         [HttpPost]
@@ -52,14 +52,14 @@ namespace GroupTracker.Controllers
         }
         public ActionResult Details(int id)
         {
-            Player thisPlayer = _db.Players.Include(player => player.JoinEntities).ThenInclude(join => join.Player).FirstOrDefault(player => player.PlayerId == id);
+            Player thisPlayer = _db.Players.Include(player => player.JoinEntities).ThenInclude(join => join.Campaign).FirstOrDefault(player => player.PlayerId == id);
             ViewBag.PageTitle = "Player Details";
             return View(thisPlayer);
         }
 
         public ActionResult Edit(int id)
         {
-            Player thisPlayer = _db.Players.FirstOrDefault(player => player.playerId == id);
+            Player thisPlayer = _db.Players.FirstOrDefault(player => player.PlayerId == id);
             ViewBag.PageTitle = "Edit Player";
             return View(thisPlayer);
         }
@@ -74,7 +74,7 @@ namespace GroupTracker.Controllers
 
         public ActionResult Delete(int id)
         {
-            Player thisPlayer = _db.Players.FirstOrDefault(player => player.playerId == id);
+            Player thisPlayer = _db.Players.FirstOrDefault(player => player.PlayerId == id);
             ViewBag.PageTitle = "Delete Player";
             return View(thisPlayer);
         }
@@ -82,7 +82,7 @@ namespace GroupTracker.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Player thisPlayer = _db.Players.FirstOrDefault(player => player.playerId == id);
+            Player thisPlayer = _db.Players.FirstOrDefault(player => player.PlayerId == id);
             _db.Players.Remove(thisPlayer);
             _db.SaveChanges();
             return RedirectToAction("Index", "Home");

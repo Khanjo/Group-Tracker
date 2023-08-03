@@ -28,7 +28,7 @@ namespace GroupTracker.Controllers
         {
             _db.Characters.Add(character);
             _db.SaveChanges();
-            return RedirectToAction("Details", "Players", new { id = player.PlayerId })
+            return RedirectToAction("Index", "Home");
         }
     }
 }
