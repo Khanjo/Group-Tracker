@@ -6,6 +6,7 @@ namespace GroupTracker.Models
         public string Name { get; set; }
         public string Race { get; set; }
         public string Class { get; set; }
+        public string Background { get; set; }
         public int PlayerId { get; set; }
         public Player Player { get; set; }
     }

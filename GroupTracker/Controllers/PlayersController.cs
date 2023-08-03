@@ -29,5 +29,12 @@ namespace GroupTracker.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Details(int id)
+        {
+            Player thisPlayer = _db.Players.Include(player => player.JoinEntities).ThenInclude(join => join.Player).FirstOrDefault(player => player.PlayerId == id);
+            ViewBag.PageTitle = "Player Details";
+            return View(thisPlayer);
+        }
     }
 }

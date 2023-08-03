@@ -1,3 +1,47 @@
 @{
     Layout = "_Layout";
 }
+
+@using GroupTracker.Models
+@model GroupTracker.Models.Player
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+
+<hr>
+
+<h2>Campaigns:</h2>
+@if (@Model.JoinEntities.Count == 0)
+{
+    <h4>This player is not currently in any campaigns</h4>
+}
+else
+{
+    <ul>
+        @foreach (CampaignPlayer join in Model.JoinEntities)
+        {
+            <li>@join.Campaign.Title</li>
+            @using (Html.BeginForm("DeleteJoin", "Players"))
+            {
+                @Html.Hidden("joinId", @join.CampaignPlayerId)
+                <input type="submit" value="Remove Campaign" class="btn btn-primary" />
+            }
+        }
+    </ul>
+}
+
+<br>
+
+<h2>Characters:</h2>
+@if (Model.Characters.Count == 0)
+{
+    <h4>@Html.DisplayFor(model => model.Name) has no characters</h4>
+}
+else
+{
+    <ul>
+        @foreach (Character character in Model.Characters)
+        {
+            <li>@Html.ActionLink(@character.Name, "Details", "Character") | race: @character.Race | class: @character.Class</li>
+        }
+    </ul>
+}
