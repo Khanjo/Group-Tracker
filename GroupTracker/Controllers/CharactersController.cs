@@ -15,5 +15,20 @@ namespace GroupTracker.Controllers
         {
             _db = db;
         }
+
+        public ActionResult Create()
+        {
+            ViewBag.PageTitle = "Create Character";
+            ViewBag.PlayerId = new SelectList(_db.Players, "PlayerId", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Character character)
+        {
+            _db.Characters.Add(character);
+            _db.SaveChanges();
+            return RedirectToAction("Details", "Players", new { id = player.PlayerId })
+        }
     }
 }

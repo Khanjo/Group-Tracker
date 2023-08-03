@@ -1,0 +1,15 @@
+@{
+    Layout = "_Layout";
+}
+
+@model GroupTracker.Models.Player
+
+<h2>Are you sure you want to delete @Html.DisplayFor(model => model.Name)</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" class="btn btn-primary" />
+}
+<br>
+<br>
+<h2>@Html.ActionLink("Back to Details", "Details", new {id = Model.PlayerId})</h2>

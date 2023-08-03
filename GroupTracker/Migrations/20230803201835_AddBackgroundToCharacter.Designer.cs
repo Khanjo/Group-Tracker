@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupTracker.Migrations
 {
     [DbContext(typeof(GroupTrackerContext))]
-    [Migration("20230803201202_BackgroundToCharacter")]
-    partial class BackgroundToCharacter
+    [Migration("20230803201835_AddBackgroundToCharacter")]
+    partial class AddBackgroundToCharacter
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
